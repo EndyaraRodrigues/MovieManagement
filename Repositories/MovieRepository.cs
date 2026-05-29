@@ -9,6 +9,10 @@ namespace MovieManagement.Data.Repositories
         private List<Movie> _movies;
         private int _proximoID;
 
+public Movie? ObterPorId(int id)
+{
+    return _movies.FirstOrDefault(m => m.ID == id);
+}
         public MovieRepository()
         {
             _movies = new List<Movie>();

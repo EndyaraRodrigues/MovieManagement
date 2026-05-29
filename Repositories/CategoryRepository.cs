@@ -12,6 +12,10 @@ namespace MovieManagement.Data.Repositories
         private List<Category> _categories;
         private int _proximoID;
 
+public Category? ObterPorId(int id)
+{
+    return _categories.FirstOrDefault(c => c.ID == id);
+}
         public CategoryRepository()
         {
             _categories = new List<Category>();
@@ -66,4 +70,6 @@ namespace MovieManagement.Data.Repositories
             return _categories.Any(c => c.Nome.Equals(nome, StringComparison.OrdinalIgnoreCase));
         }
     }
+
+    
 }

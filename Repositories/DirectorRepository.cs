@@ -12,6 +12,10 @@ namespace MovieManagement.Data.Repositories
         private List<Director> _directors;
         private int _proximoID;
 
+public Director? ObterPorId(int id)
+{
+    return _directors.FirstOrDefault(d => d.ID == id);
+}
         public DirectorRepository()
         {
             _directors = new List<Director>();

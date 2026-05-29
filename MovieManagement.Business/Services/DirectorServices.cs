@@ -21,15 +21,18 @@ namespace MovieManagement.Business.Services
             {
                 throw new Exception("O nome do realizador não pode estar vazio");
             }
+            if (string.IsNullOrEmpty(pais))           // ← adiciona isto
+        throw new Exception("O país é obrigatório");
             if (_repository.ExistePorNome(nome))
             {
                 throw new Exception("Já existe um realizador com esse nome");
             }
            
             Director novo = new Director();
-            novo.ID = id;
-            novo.Nome = nome;
-            novo.Pais = pais;
+novo.ID = id;
+novo.Nome = nome;
+novo.Pais = pais;
+_repository.Adicionar(novo); 
             
         }
 

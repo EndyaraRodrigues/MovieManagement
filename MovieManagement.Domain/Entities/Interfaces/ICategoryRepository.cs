@@ -5,6 +5,7 @@ using System.Text;
 
 namespace MovieManagement.Domain.Interfaces
 {
+    
     public interface ICategoryRepository
     {
         public void Adicionar(Category category);
@@ -12,5 +13,8 @@ namespace MovieManagement.Domain.Interfaces
         public Category? ObterPorNome(string nome);
         public bool Remover(int id);
         public bool ExistePorNome(string nome);
+        public Category? ObterPorId(int id);
     }
+
+    
 }
