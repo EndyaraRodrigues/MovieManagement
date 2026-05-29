@@ -9,7 +9,6 @@ namespace MovieManagement.Business.Services
         private readonly ICategoryRepository _categoryRepository;
         private readonly IDirectorRepository _directorRepository;
 
-        // Agora recebe os 3 repositórios
         public MovieServices(IMovieRepository repository,
                              ICategoryRepository categoryRepository,
                              IDirectorRepository directorRepository)
@@ -32,22 +31,22 @@ namespace MovieManagement.Business.Services
                 throw new Exception("A classificação deve ser entre 0 e 5");
 
             // Valida se a categoria existe
-            var categoria = _categoryRepository.ObterPorId(categoriaId);
-            if (categoria == null)
+            if (_categoryRepository.ObterPorId(categoriaId) == null)
                 throw new Exception("Categoria não encontrada");
 
             // Valida se o realizador existe
-            var realizador = _directorRepository.ObterPorId(realizadorId);
-            if (realizador == null)
+            if (_directorRepository.ObterPorId(realizadorId) == null)
                 throw new Exception("Realizador não encontrado");
 
-            Movie novo = new Movie();
-            novo.Titulo = titulo;
-            novo.Ano = ano;
-            novo.Lingua = lingua;
-            novo.Classificacao = classificacao;
-            novo.CategoriaID = categoriaId;
-            novo.RealizadorID = realizadorId;
+            Movie novo = new Movie
+            {
+                Titulo = titulo,
+                Ano = ano,
+                Lingua = lingua,
+                Classificacao = classificacao,
+                CategoriaID = categoriaId,
+                RealizadorID = realizadorId
+            };
 
             _repository.Adicionar(novo);
         }
